@@ -17,10 +17,13 @@ def main():
     screen_resolution = auto.size()
 
     print("You have chosen " + chosen_course.name)
-    print("Please move to the tile in front of the last obstacle, then click the compass by the minjimap, then input anything in this program which will start the course in 10 seconds...")
+    print("Please move to the tile in front of the last obstacle, scroll out completely, then click the compass by the minjimap, then input anything in this program which will start the course in 10 seconds...")
     input()
     time.sleep(START_DELAY)
-    set_camera_position(screen_resolution)
+
+    # Set camera to top_down
+    move_mouse_to_centre(screen_resolution)
+    auto.drag(0, 100, 1, button="middle")
 
     while True:
         do_course(chosen_course, screen_resolution)
@@ -48,17 +51,6 @@ def move_mouse_to_centre(screen_resolution):
     :return:
     """
     auto.moveTo(screen_resolution[0] // 2 - 15, screen_resolution[1] // 2 - 5, 0.5)
-
-
-def set_camera_position(screen_resolution):
-    """
-    :param screen_resolution:
-    :type screen_resolution: tuple of int
-    :return:
-    """
-    auto.scroll(-4000)
-    move_mouse_to_centre(screen_resolution)
-    auto.drag(0, 100, 1, button="middle")
 
 
 if __name__ == "__main__":
