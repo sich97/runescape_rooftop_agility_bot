@@ -2,11 +2,11 @@ import pyautogui as auto
 import time
 import data_handler
 from classes import *
-from anti_bot_detection import *
+from anti_bot_detection import anti_bot_detection
 
 
 START_DELAY = 5
-MAX_DURATION = 4
+MAX_DURATION = 4 * 60 * 60
 
 ANTI_BOT_DETECTION_CHANCE = 0.1
 ANTI_BOT_DETECTION_MIN_PAUSE = 10
@@ -41,7 +41,7 @@ def main():
 
     completed_loops = 0
     start = time.time()
-    while (completed_loops < desired_amount_of_loops) and (time.time() - start < MAX_DURATION * 60 * 60):
+    while (completed_loops < desired_amount_of_loops) and (time.time() - start < MAX_DURATION):
         do_course(chosen_course, compass, screen_resolution, ANTI_BOT_DETECTION_MIN_DRAG_TIME,
                   ANTI_BOT_DETECTION_MAX_DRAG_TIME)
         completed_loops += 1
