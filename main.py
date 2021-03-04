@@ -2,10 +2,17 @@ import pyautogui as auto
 import time
 import data_handler
 from classes import *
+from anti_bot_detection import *
 
 
 START_DELAY = 5
 MAX_DURATION = 4
+
+ANTI_BOT_DETECTION_CHANCE = 0.1
+ANTI_BOT_DETECTION_MIN_PAUSE = 10
+ANTI_BOT_DETECTION_MAX_PAUSE = 60 * 4
+ANTI_BOT_DETECTION_MIN_DRAG_TIME = 1
+ANTI_BOT_DETECTION_MAX_DRAG_TIME = 3
 
 
 def main():
@@ -35,14 +42,23 @@ def main():
     completed_loops = 0
     start = time.time()
     while (completed_loops < desired_amount_of_loops) and (time.time() - start < MAX_DURATION * 60 * 60):
-        do_course(chosen_course)
+        do_course(chosen_course, compass, screen_resolution, ANTI_BOT_DETECTION_MIN_DRAG_TIME,
+                  ANTI_BOT_DETECTION_MAX_DRAG_TIME)
         completed_loops += 1
 
 
-def do_course(course):
+def do_course(course, compass, screen_resolution, anti_bot_detection_min_drag_time, anti_bot_detection_max_drag_time):
     """
     :param course:
     :type course: classes.Course
+    :param compass:
+    :type compass: list of int
+    :param screen_resolution:
+    :type screen_resolution: tuple of int
+    :param anti_bot_detection_min_drag_time:
+    :type anti_bot_detection_min_drag_time: int
+    :param anti_bot_detection_max_drag_time:
+    :type anti_bot_detection_max_drag_time: int
     :return:
     """
     for obstacle in course.obstacles:
@@ -50,6 +66,9 @@ def do_course(course):
             auto.moveTo(sub_step.x_pos, sub_step.y_pos, 0.5)
             auto.click()
             time.sleep(sub_step.time_to_complete)
+        anti_bot_detection(1 - ANTI_BOT_DETECTION_CHANCE, ANTI_BOT_DETECTION_MIN_PAUSE, ANTI_BOT_DETECTION_MAX_PAUSE,
+                           compass, screen_resolution, anti_bot_detection_min_drag_time,
+                           anti_bot_detection_max_drag_time)
         auto.moveTo(obstacle.x_pos, obstacle.y_pos, 1)
         auto.click()
         time.sleep(obstacle.time_to_complete)
