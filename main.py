@@ -18,6 +18,7 @@ def main():
     screen_resolution = auto.size()
 
     print("You have chosen " + chosen_course.name)
+    desired_amount_of_loops = int(input("And how many times would you like to do this course?"))
     print("Please move to the tile in front of the last obstacle and scroll out completely."
           "Then input anything in this program which will start the course in 10 seconds...")
     input()
@@ -30,8 +31,10 @@ def main():
     auto.moveTo(screen_resolution[0] // 2 - 15, screen_resolution[1] // 2 - 5, 0.5)
     auto.drag(0, 100, 1, button="middle")
 
-    while True:
+    completed_loops = 0
+    while completed_loops < desired_amount_of_loops:
         do_course(chosen_course)
+        completed_loops += 1
 
 
 def do_course(course):
