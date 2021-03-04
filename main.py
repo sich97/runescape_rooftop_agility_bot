@@ -5,6 +5,7 @@ from classes import *
 
 
 START_DELAY = 5
+MAX_DURATION = 4
 
 
 def main():
@@ -32,7 +33,8 @@ def main():
     auto.drag(0, 100, 1, button="middle")
 
     completed_loops = 0
-    while completed_loops < desired_amount_of_loops:
+    start = time.time()
+    while (completed_loops < desired_amount_of_loops) and (time.time() - start < MAX_DURATION * 60 * 60):
         do_course(chosen_course)
         completed_loops += 1
 
