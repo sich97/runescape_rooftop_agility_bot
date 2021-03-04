@@ -62,12 +62,12 @@ def camera(compass, screen_resolution, min_drag_time, max_drag_time):
     amount_of_movements = random.randint(1, MAX_CAMERA_ROTATIONS)
     for i in range(amount_of_movements):
         if bool(random.randint(0, 1)):
-            x_drag_destination = random.randint(screen_resolution[0] // 2 - 15, SCREEN_RESOLUTION_MARGIN)
+            x_drag_destination = random.randint(SCREEN_RESOLUTION_MARGIN, screen_resolution[0] // 2 - 15)
         else:
             x_drag_destination = random.randint(screen_resolution[0] // 2 - 15,
                                                 screen_resolution[0] - SCREEN_RESOLUTION_MARGIN)
 
-        y_drag_destination = random.randint(screen_resolution[1] // 2 - 5, SCREEN_RESOLUTION_MARGIN)
+        y_drag_destination = random.randint(SCREEN_RESOLUTION_MARGIN, screen_resolution[1] // 2 - 5)
 
         drag_time = random.randint(min_drag_time, max_drag_time)
 
