@@ -27,6 +27,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Simon\Desktop\git\runescape_rooftop_agility_bot" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -38,7 +44,7 @@
       <updated>1614786713958</updated>
       <workItem from="1614786728874" duration="154000" />
       <workItem from="1614786924769" duration="8047000" />
-      <workItem from="1614791979137" duration="311000" />
+      <workItem from="1614791979137" duration="19110000" />
     </task>
     <servers />
   </component>
